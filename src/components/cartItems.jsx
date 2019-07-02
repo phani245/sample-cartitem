@@ -11,6 +11,7 @@ class Cartitems extends Component {
         <Cartitem />
         <Cartitem />
         <Cartitem />
+        <Cartitem />
       </div>
     );
   }
