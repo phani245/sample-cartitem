@@ -1,28 +1,34 @@
 import React, { Component } from "react";
 class Cartitem extends Component {
-  state = {
-    counter: 0,
-    tags: ["tag1", "tag2", "tag3"]
-  };
+  // state = {
+  //   counter: this.props.product.value,
+  //   tags: ["tag1", "tag2", "tag3"]
+  // };
 
   // constructor() {
   //   super();
   //   console.log("constructor", this);
   // }
-  incrementItems = product => {
-    this.setState({
-      counter: this.state.counter + 1
-    });
-  };
+  // incrementItems = product => {
+  //   this.setState({
+  //     counter: this.state.counter + 1
+  //   });
+  // };
   render() {
     return (
       <div>
         <span className={this.activeClass()}>{this.formatCount()}</span>
         <button
-          onClick={() => this.incrementItems({ id: 1 })}
+          onClick={() => this.props.onIncrementitems(this.props.product)}
           className="btn btn-secondary btn-sm"
         >
           Increment
+        </button>
+        <button
+          onClick={() => this.props.onDelete(this.props.product.id)}
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
         </button>
         {/* <ul>
           {this.state.tags.map(tag => (
@@ -34,12 +40,12 @@ class Cartitem extends Component {
   }
   activeClass() {
     let classes = "badge m-2 badge-";
-    classes += this.state.counter === 0 ? "warning" : "primary";
+    classes += this.props.product.value === 0 ? "warning" : "primary";
     return classes;
   }
   formatCount() {
-    const { counter } = this.state;
-    return counter === 0 ? "Zero" : counter;
+    const { value } = this.props.product;
+    return value === 0 ? "Zero" : value;
   }
 }
 
